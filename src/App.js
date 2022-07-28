@@ -1,4 +1,5 @@
 import "./css/reset.css";
+import "./css/style.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import SectionSelect from "./SectionSelect/SectionSelect";
