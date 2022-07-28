@@ -3,16 +3,18 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function SessionSelect () {
+export default function SessionSelect ({
+    movieTitle,
+    setMovieTitle,
+    moviePoster,
+    setMoviePoster
+}) {
 
     const { idFilme } = useParams();
     const [sessions, setSessions] = useState([]);
-    const [movieTitle, setMovieTitle] = useState("");
-    const [moviePoster, setMoviePoster] = useState("");
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
-        
         promise.then(result => {
             setSessions(result.data.days);
             setMoviePoster(result.data.posterURL);
