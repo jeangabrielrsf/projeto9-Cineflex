@@ -2,6 +2,7 @@ import "./style.css";
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function SessionSelect ({
     movieTitle,
@@ -38,9 +39,11 @@ export default function SessionSelect ({
                             <div className="session-hours">
                                 {session.showtimes.map((show, index) => {
                                     return (
-                                        <div className="hour" key={index}>
-                                            {show.name}
-                                        </div>
+                                        <Link to={`/assentos/${show.id}`} style={{textDecoration: 'none'}}>
+                                            <div className="hour" key={index}>
+                                                {show.name}
+                                            </div>
+                                        </Link>
                                     );
                                 })}
                             </div>
