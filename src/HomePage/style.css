@@ -18,6 +18,7 @@ div.select-title {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .movie-poster {
@@ -28,13 +29,14 @@ div.select-title {
     align-items: center;
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    margin: 10px 20px;
+    margin: 10px 15px;
 }
 
 .movie-poster:hover {
     filter: brightness(115%);
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px black;
+    border-style: solid;
 }
 
 .movie-poster img {

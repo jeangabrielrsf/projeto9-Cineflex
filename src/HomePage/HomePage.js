@@ -1,6 +1,7 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 
@@ -12,7 +13,6 @@ export default function HomePage () {
 
         promise.then(result => {
             setMovies(result.data);
-            console.log(movies);
         });
     }, []);
     
@@ -27,9 +27,12 @@ export default function HomePage () {
             <div className="movies">
                 {movies.map((movie,index) => {
                     return (
-                    <div className="movie-poster" key={index} >
-                        <img src={movie.posterURL} />
-                    </div>
+                        <Link to={`/sessoes/${movie.id}`} key={index} >
+                            <div className="movie-poster" >
+                                <img src={movie.posterURL}  alt=""/>
+                            </div>
+                        </Link>
+                   
                     );
                 })}
             </div>
