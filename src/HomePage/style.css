@@ -21,7 +21,7 @@ div.select-title {
     margin-bottom: 40px;
 }
 
-.movie-poster {
+.movies .movie-poster {
     width: 145px;
     height: 209px;
     display: flex;
@@ -32,14 +32,14 @@ div.select-title {
     margin: 10px 15px;
 }
 
-.movie-poster:hover {
+.movies .movie-poster:hover {
     filter: brightness(115%);
     cursor: pointer;
     border: 1px black;
     border-style: solid;
 }
 
-.movie-poster img {
+.movies .movie-poster img {
     width: 129px;
     height: 193px;
     object-fit: cover;

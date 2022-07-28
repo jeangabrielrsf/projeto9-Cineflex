@@ -1,3 +1,8 @@
+.container-select {
+    margin-bottom: 150px;
+}
+
+
 .select-session {
     display: flex;
     justify-content: center;
@@ -6,4 +11,78 @@
     font-size: 24px;
     line-height: 28.13px;
     margin: 30px auto;
+}
+
+.sessions {
+    margin: 15px 10px;
+}
+
+.session-day {
+    font-size: 20px;
+    line-height: 23.44px;
+    color: #293845;
+    margin:10px 10px;
+}
+
+.session-hours {
+    display: flex;
+}
+
+.hour {
+    font-size: 18px;
+    line-height: 21.09px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E8833A;
+    border-radius: 3px;
+    width: 83px;
+    height: 43px;
+    margin: 10px 10px;
+}
+
+.hour:hover {
+    cursor: pointer;
+    filter: brightness(115%);
+    border: 1px solid black;
+}
+
+
+
+footer {
+    background-color: #DFE6ED;
+    width: 100%;
+    min-height: 117px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    border-top:  1px solid #9EADBA;
+}
+
+footer > div.movie-poster {
+    width: 64px;
+    height: 89px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin: auto 10px;
+}
+
+footer > div.movie-poster img {
+    width: 48px;
+    height: 72px;
+    object-fit: cover;
+}
+
+footer > div.movie-title {
+    color: #293845;
+    font-size: 26px;
+    line-height: 30.47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
