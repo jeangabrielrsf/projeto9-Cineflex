@@ -19,10 +19,7 @@ export default function HomePage () {
 
 
     return (
-        <div className="homepage-container">
-            <header>
-                CINEFLEX
-            </header>
+        <>
             <div className="select-title">
                 <h2>Selecione o filme</h2>
             </div>
@@ -37,6 +34,6 @@ export default function HomePage () {
                 })}
             </div>
         
-        </div>
+        </>
     );
 }

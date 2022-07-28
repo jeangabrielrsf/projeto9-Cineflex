@@ -5,10 +5,12 @@ import HomePage from "./HomePage/HomePage";
 import SectionSelect from "./SectionSelect/SectionSelect";
 import SeatSelect from "./SeatSelect/SeatSelect";
 import Success from "./Success/Success";
+import Header from "./Header/Header";
 
 export default function App () {
     return (
         <BrowserRouter >
+            <Header />
             <Routes>
 
                 <Route path="/" element={<HomePage />} />
