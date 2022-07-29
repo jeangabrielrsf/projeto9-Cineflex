@@ -14,8 +14,6 @@ export default function SeatSelect ({
     const [seats, setSeats] = useState([]);
     const [date, setDate] = useState("");
 
-    console.log('CRIEI');
-
     useEffect (() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
 
@@ -23,13 +21,10 @@ export default function SeatSelect ({
             setMovieInfo(result.data);
             setDate(result.data.day);
             setSeats(result.data.seats);
-            console.log(seats);
-            console.log('to no use effect')
         })
     }, []);
 
-    const newSeats = [...seats];
-    console.log(seats);
+
 
 
     return (
@@ -49,7 +44,31 @@ export default function SeatSelect ({
                 </div>
             </div>
 
+            <div className="seats-help-container">
+                <div className="seats-help">
+                        <div className="seat selected"></div>
+                        <p>Selecionado</p>
+                </div>
+                <div className="seats-help">
+                        <div className="seat available"></div>
+                        <p>Disponível</p>
+                </div>
+                <div className="seats-help">
+                        <div className="seat unavailable"></div>
+                        <p>Indisponível</p>
+                </div>
+            </div>
+            
+            <form >
+                <label for="userName">Nome do comprador:</label>
+                <input type="text" id="userName" required placeholder="Digite seu nome..."/>
 
+                <label for="userCPF">CPF do comprador:</label>
+                <input type="text" id="userCPF" required placeholder="Digite seu CPF..."/>
+
+                <button type="submit">Reservar assento(s)</button>
+            </form>
+                    
             <footer>
                 <div className="movie-poster">
                     <img src={moviePoster} alt="" />
@@ -62,9 +81,5 @@ export default function SeatSelect ({
                 
             </footer>
         </>
-
-
-
-
     );
 }

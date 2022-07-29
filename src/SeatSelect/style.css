@@ -56,3 +56,57 @@
     background-color: #FBE192;
     border: 1px solid #F7C52B;
 }
+
+.seats-help-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seats-help {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+}
+
+.seats-help > p {
+    margin: 5px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: 10px auto;
+}
+
+form > label {
+    font-size: 18px;
+    color: #293845;
+}
+
+form > input {
+    height: 50px;
+    border: 1px solid #D4D4D4;
+    margin-bottom: 20px;
+}
+
+form > input::placeholder{
+    font-style: italic;
+    color: #AFAFAF;
+    font-size: 18px;
+    line-height: 21.09px;
+}
+
+form > button {
+    background-color: #E8833A;
+    width: 225px;
+    height: 42px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border-radius: 3px;
+    margin: 40px auto;
+}
