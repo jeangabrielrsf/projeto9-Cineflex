@@ -10,6 +10,7 @@ import Header from "./Header/Header";
 
 export default function App () {
 
+
     const [movieTitle, setMovieTitle] = useState("");
     const [moviePoster, setMoviePoster] = useState("");
 
@@ -19,13 +20,20 @@ export default function App () {
             <Routes>
 
                 <Route path="/" element={<HomePage />} />
-                <Route path="/sessoes/:idFilme" element={<SessionSelect 
-                    movieTitle={movieTitle}
-                    setMovieTitle={setMovieTitle}
-                    moviePoster={moviePoster}
-                    setMoviePoster={setMoviePoster}
-                />} />
-                <Route path="/assentos/:idSessao" element={<SeatSelect />} />
+                <Route path="/sessoes/:idFilme" element={
+                    <SessionSelect  
+                        movieTitle={movieTitle}
+                        setMovieTitle={setMovieTitle}
+                        moviePoster={moviePoster}
+                        setMoviePoster={setMoviePoster}
+                    />} 
+                />
+                <Route path="/assentos/:idSessao" element={
+                    <SeatSelect 
+                        movieTitle={movieTitle}
+                        moviePoster={moviePoster}
+                    />}
+                 />
                 <Route path="/sucesso" element={<Success />} />
 
             </Routes>

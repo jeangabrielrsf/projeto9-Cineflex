@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function SessionSelect ({
+
     movieTitle,
     setMovieTitle,
     moviePoster,
@@ -15,7 +16,7 @@ export default function SessionSelect ({
     const [sessions, setSessions] = useState([]);
 
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${idFilme}/showtimes`);
         promise.then(result => {
             setSessions(result.data.days);
             setMoviePoster(result.data.posterURL);
