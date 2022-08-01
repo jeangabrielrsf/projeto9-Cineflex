@@ -2,6 +2,40 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
+import Form from "../Form/Form";
+
+
+function Seat ({
+    available,
+    id,
+    name,
+    chosen,
+    setChosen
+}) {
+    const [seatClass, setSeatClass] = useState(available? "seat available" : "seat unavailable");
+
+    function selectSeat () {
+        if (available) {
+            if (seatClass === "seat available") {
+                setSeatClass("seat selected");
+                setChosen([...chosen, id]);
+
+            } else {
+                setSeatClass("seat available");
+                chosen.splice(chosen.indexOf(id), 1);
+            }
+            
+        } else {
+            alert("Esse assento já foi comprado!");
+        }
+ 
+    }
+    return (
+        <div className={seatClass} onClick={selectSeat}>
+            {name}
+        </div>
+    )
+}
 
 
 export default function SeatSelect ({
@@ -13,10 +47,12 @@ export default function SeatSelect ({
     const [movieInfo, setMovieInfo] = useState("");
     const [seats, setSeats] = useState([]);
     const [date, setDate] = useState("");
+    const [chosen, setChosen] = useState([]);
+
 
     useEffect (() => {
+        console.log("entrei no effect");
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
-
         promise.then(result => {
             setMovieInfo(result.data);
             setDate(result.data.day);
@@ -24,8 +60,20 @@ export default function SeatSelect ({
         })
     }, []);
 
+    
 
+    
 
+    // function selectSeat (available) {
+    //     console.log("entrei na selectSeat");
+    //     if (available) {
+    //         alert("ta disponível")
+    //         seatClass = "seat selected";
+    //     } else {
+    //         alert("nao ta disponível")
+    //     }
+    //     return;
+    // }
 
     return (
         <>
@@ -34,11 +82,10 @@ export default function SeatSelect ({
             </div>
             <div className="seats-container">
                 <div className="seats">
-                    {seats.map((seat) => {
+                    {seats.map((seat, index) => {
+
                         return (
-                            <div className={(seat.isAvailable? "seat available": "seat unavailable")} key={seat.id}>
-                                {seat.name}
-                            </div>
+                            <Seat key={index} available={seat.isAvailable} id={seat.id} name={seat.name} chosen={chosen} setChosen={setChosen} />
                         );
                     })}
                 </div>
@@ -59,15 +106,7 @@ export default function SeatSelect ({
                 </div>
             </div>
             
-            <form >
-                <label for="userName">Nome do comprador:</label>
-                <input type="text" id="userName" required placeholder="Digite seu nome..."/>
-
-                <label for="userCPF">CPF do comprador:</label>
-                <input type="text" id="userCPF" required placeholder="Digite seu CPF..."/>
-
-                <button type="submit">Reservar assento(s)</button>
-            </form>
+            <Form chosen={chosen}/>
                     
             <footer>
                 <div className="movie-poster">

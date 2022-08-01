@@ -1,0 +1,34 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: 10px auto;
+}
+
+form > label {
+    font-size: 18px;
+    color: #293845;
+}
+
+form > input {
+    height: 50px;
+    border: 1px solid #D4D4D4;
+    margin-bottom: 20px;
+}
+
+form > input::placeholder{
+    font-style: italic;
+    color: #AFAFAF;
+    font-size: 18px;
+    line-height: 21.09px;
+}
+
+form > button {
+    background-color: #E8833A;
+    width: 225px;
+    height: 42px;
+    color: #FFFFFF;
+    font-size: 18px;
+    border-radius: 3px;
+    margin: 40px auto;
+}
