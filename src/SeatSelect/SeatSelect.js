@@ -10,7 +10,9 @@ function Seat ({
     id,
     name,
     chosen,
-    setChosen
+    setChosen,
+    seatsBought,
+    setSeatsBought
 }) {
     const [seatClass, setSeatClass] = useState(available? "seat available" : "seat unavailable");
 
@@ -19,10 +21,12 @@ function Seat ({
             if (seatClass === "seat available") {
                 setSeatClass("seat selected");
                 setChosen([...chosen, id]);
+                setSeatsBought([...seatsBought, name]);
 
             } else {
                 setSeatClass("seat available");
                 chosen.splice(chosen.indexOf(id), 1);
+                seatsBought.splice(seatsBought.indexOf(name), 1);
             }
             
         } else {
@@ -40,7 +44,11 @@ function Seat ({
 
 export default function SeatSelect ({
     movieTitle,
-    moviePoster
+    moviePoster,
+    seatsBought,
+    setSeatsBought,
+    setClientInfo
+
 }) {
 
     const {idSessao} = useParams();
@@ -60,20 +68,6 @@ export default function SeatSelect ({
         })
     }, []);
 
-    
-
-    
-
-    // function selectSeat (available) {
-    //     console.log("entrei na selectSeat");
-    //     if (available) {
-    //         alert("ta disponível")
-    //         seatClass = "seat selected";
-    //     } else {
-    //         alert("nao ta disponível")
-    //     }
-    //     return;
-    // }
 
     return (
         <>
@@ -85,7 +79,9 @@ export default function SeatSelect ({
                     {seats.map((seat, index) => {
 
                         return (
-                            <Seat key={index} available={seat.isAvailable} id={seat.id} name={seat.name} chosen={chosen} setChosen={setChosen} />
+                            <Seat   key={index} available={seat.isAvailable} id={seat.id} name={seat.name} chosen={chosen} setChosen={setChosen} 
+                                    seatsBought={seatsBought}    setSeatsBought={setSeatsBought}
+                            />
                         );
                     })}
                 </div>
@@ -106,7 +102,7 @@ export default function SeatSelect ({
                 </div>
             </div>
             
-            <Form chosen={chosen}/>
+            <Form chosen={chosen} setClientInfo={setClientInfo} />
                     
             <footer>
                 <div className="movie-poster">

@@ -13,6 +13,10 @@ export default function App () {
 
     const [movieTitle, setMovieTitle] = useState("");
     const [moviePoster, setMoviePoster] = useState("");
+    const [sessionDay, setSessionDay] = useState("");
+    const [sessionHour, setSessionHour] = useState("");
+    const [seatsBought, setSeatsBought] = useState([]);
+    const [clientInfo, setClientInfo] = useState({});
 
     return (
         <BrowserRouter >
@@ -26,15 +30,28 @@ export default function App () {
                         setMovieTitle={setMovieTitle}
                         moviePoster={moviePoster}
                         setMoviePoster={setMoviePoster}
+                        setSessionDay={setSessionDay}
+                        setSessionHour={setSessionHour}
                     />} 
                 />
                 <Route path="/assentos/:idSessao" element={
                     <SeatSelect 
                         movieTitle={movieTitle}
                         moviePoster={moviePoster}
+                        seatsBought={seatsBought}
+                        setSeatsBought={setSeatsBought}
+                        setClientInfo={setClientInfo}
                     />}
                  />
-                <Route path="/sucesso" element={<Success />} />
+                <Route path="/sucesso" element={
+                    <Success 
+                        movieTitle={movieTitle}
+                        sessionDay={sessionDay}
+                        sessionHour={sessionHour}
+                        seatsBought = {seatsBought}
+                        clientInfo = {clientInfo}
+                    />} 
+                />
 
             </Routes>
 

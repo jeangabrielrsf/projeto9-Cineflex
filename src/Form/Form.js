@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 
-export default function Form ({chosen}) {
+export default function Form ({
+    chosen,
+    setClientInfo
+}) {
 
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
@@ -24,6 +27,10 @@ export default function Form ({chosen}) {
         });
 
         request.then (result => {
+            setClientInfo({
+                name,
+                cpf,
+            })
             setName("");
             setCpf("");
             navigate("/sucesso");

@@ -9,7 +9,9 @@ export default function SessionSelect ({
     movieTitle,
     setMovieTitle,
     moviePoster,
-    setMoviePoster
+    setMoviePoster,
+    setSessionDay,
+    setSessionHour
 }) {
 
     const { idFilme } = useParams();
@@ -23,6 +25,7 @@ export default function SessionSelect ({
             setMovieTitle(result.data.title);
         });
     }, []);
+
     return (
         <>
             <div className="container-select">
@@ -40,7 +43,10 @@ export default function SessionSelect ({
                             <div className="session-hours">
                                 {session.showtimes.map((show, index) => {
                                     return (
-                                        <Link to={`/assentos/${show.id}`} style={{textDecoration: 'none'}}>
+                                        <Link to={`/assentos/${show.id}`} style={{textDecoration: 'none'}} onClick={() => {
+                                            setSessionDay(session.date);
+                                            setSessionHour(show.name);
+                                        }}>
                                             <div className="hour" key={index}>
                                                 {show.name}
                                             </div>
